@@ -384,6 +384,76 @@
             color: white;
         }
 
+        /* Map and Review Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .map-button, .review-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .map-button {
+            background: #4285F4;
+            color: white;
+        }
+
+        .map-button:hover {
+            background: #3367D6;
+            color: white;
+        }
+
+        .review-button {
+            background: #00AA6C;
+            color: white;
+        }
+
+        .review-button:hover {
+            background: #00954A;
+            color: white;
+        }
+
+        .star-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #FF6B35;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .hotel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .location-info {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid var(--primary-blue);
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -573,13 +643,59 @@
 
             <div class="card" id="hotels">
                 <h3>🏨 Accommodations Overview</h3>
-                <p><strong>March 25-30:</strong> Marriott Sanibel Harbour Resort & Spa</p>
-                <p><strong>Address:</strong> 17260 Harbour Pointe Drive, Fort Myers, FL 33908</p>
-                <p><strong>Phone:</strong> +1 (239) 466-4000 | Platinum Elite Benefits</p>
-                <p><strong>March 30-April 1:</strong> Sarasota Hotel (Details from Jenifer's reservations)</p>
-                <p><strong>April 1-5:</strong> Gaylord Palms Resort & Convention Center</p>
-                <p><strong>Address:</strong> 6000 West Osceola Parkway, Kissimmee, FL</p>
-                <p><strong>Confirmation:</strong> 98811585 | 1 Bedroom Suite with King Bed</p>
+                
+                <div class="location-info">
+                    <div class="hotel-header">
+                        <div>
+                            <p><strong>March 25-30:</strong> Marriott Sanibel Harbour Resort & Spa</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.0/5 (2,777 reviews)
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>Address:</strong> 17260 Harbour Pointe Drive, Fort Myers, FL 33908</p>
+                    <p><strong>Phone:</strong> +1 (239) 466-4000 | Platinum Elite Benefits</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=17260%20Harbour%20Pointe%20Drive,%20Fort%20Myers,%20FL%2033908" class="map-button" target="_blank">
+                            📍 Apple Maps
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=17260%20Harbour%20Pointe%20Drive%20Fort%20Myers%20FL%2033908" class="map-button" target="_blank">
+                            🗺️ Google Maps
+                        </a>
+                        <a href="https://www.tripadvisor.com/Hotel_Review-g34230-d115762-Reviews-Marriott_Sanibel_Harbour_Resort_Spa-Fort_Myers_Florida.html" class="review-button" target="_blank">
+                            📝 TripAdvisor Reviews
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <p><strong>March 30-April 1:</strong> Sarasota Hotel</p>
+                    <p><em>Details from Jenifer's reservations - will update with ratings when confirmed</em></p>
+                </div>
+                
+                <div class="location-info">
+                    <div class="hotel-header">
+                        <div>
+                            <p><strong>April 1-5:</strong> Gaylord Palms Resort & Convention Center</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span> 4.5/5 (946+ reviews)
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>Address:</strong> 6000 West Osceola Parkway, Kissimmee, FL</p>
+                    <p><strong>Confirmation:</strong> 98811585 | 1 Bedroom Suite with King Bed</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=6000%20West%20Osceola%20Parkway,%20Kissimmee,%20FL" class="map-button" target="_blank">
+                            📍 Apple Maps
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=6000%20West%20Osceola%20Parkway%20Kissimmee%20FL" class="map-button" target="_blank">
+                            🗺️ Google Maps
+                        </a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g34352-d6158448-Reviews-Gaylord_Palms_Resort_Convention_Center-Kissimmee_Florida.html" class="review-button" target="_blank">
+                            📝 TripAdvisor Reviews
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <div class="card" id="rental-car">
@@ -1398,17 +1514,54 @@
             <h4 style="color: var(--primary-blue); margin-top: 20px;">🏖️ Fort Myers Dining</h4>
             <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 10px 0;">
                 <p><strong>🦐 Seafood Specialties:</strong></p>
-                <ul style="margin-left: 20px; line-height: 1.8;">
-                    <li>The Beached Whale - Fresh catch, family-friendly</li>
-                    <li>Nervous Nellie's - Waterfront dining, kids' menu</li>
-                    <li>Doc Ford's Rum Bar & Grille - Caribbean flavors</li>
-                </ul>
-                <p><strong>🍕 Family Favorites:</strong></p>
-                <ul style="margin-left: 20px; line-height: 1.8;">
-                    <li>Pizza restaurants on Fort Myers Beach</li>
-                    <li>Casual dining in River District</li>
-                    <li>Ice cream shops for dessert</li>
-                </ul>
+                
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>The Beached Whale</strong> - Fresh catch, family-friendly</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.0/5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=1249%20Estero%20Blvd,%20Fort%20Myers%20Beach,%20FL%2033931" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=The%20Beached%20Whale%20Fort%20Myers%20Beach" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g34231-d1751898-Reviews-The_Beached_Whale-Fort_Myers_Beach_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>Nervous Nellie's</strong> - Waterfront dining, kids' menu</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.1/5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=1131%201st%20St,%20Fort%20Myers%20Beach,%20FL%2033931" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nervous%20Nellie's%20Fort%20Myers%20Beach" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g34231-d401542-Reviews-Nervous_Nellie_s_Crazy_Waterfront_Eatery-Fort_Myers_Beach_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>Doc Ford's Rum Bar & Grille</strong> - Caribbean flavors</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.2/5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=708%20Fishermans%20Wharf,%20Fort%20Myers%20Beach,%20FL%2033931" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Doc%20Ford's%20Rum%20Bar%20Fort%20Myers%20Beach" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g34231-d801973-Reviews-Doc_Ford_s_Rum_Bar_Grille-Fort_Myers_Beach_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
             </div>
             
             <h4 style="color: var(--primary-blue); margin-top: 20px;">🎭 Sarasota Dining</h4>
@@ -1512,10 +1665,39 @@
             
             <h4 style="color: var(--primary-blue); margin-top: 20px;">🏖️ Fort Myers Date Night Options</h4>
             <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0;">
-                <p><strong>🎵 Buddha Lounge:</strong> Live music venue with loud music, small dance floor, great for dancing</p>
-                <p><strong>🎶 City Tavern (River District):</strong> 20+ years, local favorite with live entertainment</p>
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>🎵 Buddha Lounge:</strong> Live music venue with loud music, small dance floor, great for dancing</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.0/5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=1515%20Broadway,%20Fort%20Myers,%20FL%2033901" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Buddha%20Lounge%20Fort%20Myers%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g34230-d12975083-Reviews-Buddha_Lounge-Fort_Myers_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>🎶 City Tavern (River District):</strong> 20+ years, local favorite with live entertainment</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.1/5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=1548%20Hendry%20St,%20Fort%20Myers,%20FL%2033901" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=City%20Tavern%20Fort%20Myers%20River%20District" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g34230-d1386633-Reviews-City_Tavern-Fort_Myers_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
                 <p><strong>🌴 Fort Myers Beach Bars:</strong> Multiple venues with mocktails, live bands, beachside dancing</p>
-                <p><strong>🎸 Live Music Venues:</strong> Weekly performances spanning Motown, funk, blues, reggae, and soul</p>
                 <p><em>Ask bartenders for creative mocktails - many venues specialize in non-alcoholic craft drinks</em></p>
             </div>
             
@@ -1544,12 +1726,53 @@
             
             <h4 style="color: var(--primary-blue); margin-top: 20px;">🏖️ Fort Myers Family Activities</h4>
             <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 10px 0;">
-                <p><strong>🌊 Fort Myers Beach:</strong> 7 miles of white sand, swimming, beachcombing, perfect for kids</p>
-                <p><strong>🐚 Sanibel Island:</strong> Shell collecting, lighthouse, wildlife refuge (30-min drive)</p>
-                <p><strong>🦩 Edison and Ford Winter Estates:</strong> Historic homes, gardens, interactive exhibits</p>
-                <p><strong>🐢 Imaginarium Science Center:</strong> Hands-on exhibits, aquarium, perfect rainy day activity</p>
-                <p><strong>🌿 Manatee Park:</strong> See manatees in winter, educational center, nature walks</p>
-                <p><strong>⛵ Boat Tours:</strong> Dolphin watching, sunset cruises from various marinas</p>
+                <div class="location-info">
+                    <p><strong>🌊 Fort Myers Beach:</strong> 7 miles of white sand, swimming, beachcombing, perfect for kids</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=Fort%20Myers%20Beach,%20FL" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Fort%20Myers%20Beach%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>🦩 Edison and Ford Winter Estates:</strong> Historic homes, gardens, interactive exhibits</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span> 4.5/5 (4,800+ reviews)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=2350%20McGregor%20Blvd,%20Fort%20Myers,%20FL%2033901" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Edison%20Ford%20Winter%20Estates%20Fort%20Myers%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g34230-d145417-Reviews-Edison_and_Ford_Winter_Estates-Fort_Myers_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <p><strong>🐚 Sanibel Island:</strong> Shell collecting, lighthouse, wildlife refuge (30-min drive)</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=Sanibel,%20FL" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sanibel%20Island%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <p><strong>🐢 Imaginarium Science Center:</strong> Hands-on exhibits, aquarium, perfect rainy day activity</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=2000%20Cranford%20Ave,%20Fort%20Myers,%20FL%2033916" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Imaginarium%20Science%20Center%20Fort%20Myers%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <p><strong>🌿 Manatee Park:</strong> See manatees in winter, educational center, nature walks</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=10901%20Palm%20Beach%20Blvd,%20Fort%20Myers,%20FL%2033905" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Manatee%20Park%20Fort%20Myers%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                    </div>
+                </div>
             </div>
             
             <h4 style="color: var(--primary-blue); margin-top: 15px;">🍽️ Fort Myers Family Dining</h4>
@@ -1560,12 +1783,69 @@
             
             <h4 style="color: var(--primary-blue); margin-top: 20px;">🏖️ Sarasota Family Activities</h4>
             <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 10px 0;">
-                <p><strong>🏆 Siesta Key Beach:</strong> #1 rated beach in US, powdery white sand, shallow waters</p>
-                <p><strong>🎨 Ringling Museum:</strong> Art museum, circus museum, historic mansion, beautiful gardens</p>
-                <p><strong>🐠 Mote Marine Laboratory:</strong> Aquarium with sharks, sea turtles, interactive exhibits</p>
-                <p><strong>🦋 Sarasota Jungle Gardens:</strong> Flamingos, reptiles, birds, educational shows</p>
-                <p><strong>🎪 Marie Selby Botanical Gardens:</strong> Canopy walkway, butterfly garden, orchid displays</p>
-                <p><strong>⛵ Sarasota Bay:</strong> Kayaking, paddleboarding, dolphin tours</p>
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>🏆 Siesta Key Beach:</strong> #1 rated beach in US, powdery white sand, shallow waters</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span> 4.8/5 (12,000+ reviews)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=Siesta%20Key,%20FL" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Siesta%20Key%20Beach%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g34607-d144137-Reviews-Siesta_Beach-Siesta_Key_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>🎨 Ringling Museum:</strong> Art museum, circus museum, historic mansion, beautiful gardens</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.2/5 (3,500+ reviews)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=5401%20Bay%20Shore%20Rd,%20Sarasota,%20FL%2034243" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Ringling%20Museum%20Sarasota%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g34618-d107537-Reviews-The_Ringling-Sarasota_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p><strong>🐠 Mote Marine Laboratory:</strong> Aquarium with sharks, sea turtles, interactive exhibits</p>
+                            <div class="star-rating">
+                                <span class="stars">⭐⭐⭐⭐</span> 4.1/5 (2,200+ reviews)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=1600%20Ken%20Thompson%20Pkwy,%20Sarasota,%20FL%2034236" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Mote%20Marine%20Laboratory%20Sarasota%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g34618-d144075-Reviews-Mote_Marine_Laboratory_Aquarium-Sarasota_Florida.html" class="review-button" target="_blank">📝 TripAdvisor Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <p><strong>🦋 Sarasota Jungle Gardens:</strong> Flamingos, reptiles, birds, educational shows</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=3701%20Bay%20Shore%20Rd,%20Sarasota,%20FL%2034234" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sarasota%20Jungle%20Gardens%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                    </div>
+                </div>
+                
+                <div class="location-info">
+                    <p><strong>🎪 Marie Selby Botanical Gardens:</strong> Canopy walkway, butterfly garden, orchid displays</p>
+                    <div class="action-buttons">
+                        <a href="https://maps.apple.com/?address=1534%20Mound%20St,%20Sarasota,%20FL%2034236" class="map-button" target="_blank">📍 Apple Maps</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Marie%20Selby%20Botanical%20Gardens%20Sarasota%20FL" class="map-button" target="_blank">🗺️ Google Maps</a>
+                    </div>
+                </div>
             </div>
             
             <h4 style="color: var(--primary-blue); margin-top: 15px;">🍽️ Sarasota Family Dining</h4>
