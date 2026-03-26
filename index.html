@@ -259,6 +259,127 @@
             background: #1e3d72;
         }
 
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue), #1e3d72);
+            color: white;
+            transition: left 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .sidebar-menu .submenu {
+            padding-left: 20px;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .sidebar-menu .submenu a {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        .menu-toggle {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1002;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-toggle:hover {
+            background: #1e3d72;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .content-wrapper {
+            transition: margin-left 0.3s ease;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .quick-link:hover {
+            background: #1e3d72;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -328,16 +449,66 @@
     </style>
 </head>
 <body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>🏖️ Florida Trip Menu</h3>
+            <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">March 25 - April 5, 2026</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#overview">📋 Trip Overview</a></li>
+            <li><a href="#flights">✈️ Flights & Travel</a></li>
+            <li><a href="#hotels">🏨 Hotels & Lodging</a></li>
+            <li><a href="#rental-car">🚗 Rental Car</a></li>
+            <li><a href="#itinerary">📅 Daily Itinerary</a>
+                <div class="submenu">
+                    <a href="#day1">Mar 25 - Travel Day</a>
+                    <a href="#day2">Mar 26 - Fort Myers</a>
+                    <a href="#day3">Mar 27 - To Sarasota</a>
+                    <a href="#day4">Mar 28 - Sarasota</a>
+                    <a href="#day5">Mar 29 - To Orlando</a>
+                    <a href="#day6">Apr 1 - Magic Kingdom</a>
+                    <a href="#day7">Apr 2 - Hollywood Studios</a>
+                    <a href="#day8">Apr 3 - EPCOT</a>
+                    <a href="#day9">Apr 4 - Animal Kingdom</a>
+                    <a href="#day10">Apr 5 - Departure</a>
+                </div>
+            </li>
+            <li><a href="#dining">🍽️ Dining Guide</a></li>
+            <li><a href="#entertainment">🎵 Entertainment</a></li>
+            <li><a href="#date-nights">💑 Date Night Options</a></li>
+            <li><a href="#family-activities">👨‍👩‍👧‍👦 Family Activities</a></li>
+            <li><a href="#layovers">🛫 Layover Guide</a></li>
+            <li><a href="#emergency">📞 Emergency Contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
     <button class="toggle-button" onclick="toggleDarkMode()">🌙 Dark Mode</button>
     <button class="print-button" onclick="window.print()">🖨️ Print</button>
 
+    <div class="content-wrapper">
     <div class="container">
         <div class="header">
             <h1>🏖️ Florida Family Adventure</h1>
             <div class="subtitle">Culbertson Family Trip | March 25-29, 2026</div>
         </div>
 
-        <div class="trip-overview">
+        <!-- Quick Navigation Links -->
+        <div class="quick-links">
+            <a href="#flights" class="quick-link">✈️ Flights</a>
+            <a href="#hotels" class="quick-link">🏨 Hotels</a>
+            <a href="#itinerary" class="quick-link">📅 Itinerary</a>
+            <a href="#dining" class="quick-link">🍽️ Dining</a>
+            <a href="#entertainment" class="quick-link">🎵 Entertainment</a>
+            <a href="#date-nights" class="quick-link">💑 Date Nights</a>
+        </div>
+
+        <div class="trip-overview" id="overview">
             <div class="card weather-info">
                 <h3>🌤️ Weather Outlook</h3>
                 <p><strong>Today (March 25):</strong> Mix of sun and clouds, 80-85°F</p>
@@ -356,7 +527,7 @@
                 </ul>
             </div>
 
-            <div class="card">
+            <div class="card" id="flights">
                 <h3>✈️ Flight Information</h3>
                 <p><strong>Confirmation:</strong> <span style="color: #008522; font-weight: bold;">CKR4XR</span></p>
                 <p><strong>Status:</strong> <span class="status-badge status-confirmed">Choice Extra Fare</span></p>
@@ -364,7 +535,7 @@
                 <p><strong>Benefits:</strong> 2 free checked bags, Extra Legroom, Free premium drinks</p>
             </div>
 
-            <div class="card">
+            <div class="card" id="hotels">
                 <h3>🏨 Accommodations Overview</h3>
                 <p><strong>March 25-27:</strong> Marriott Sanibel Harbour Resort & Spa</p>
                 <p><strong>Address:</strong> 17260 Harbour Pointe Drive, Fort Myers, FL 33908</p>
@@ -374,7 +545,7 @@
                 <p><strong>Confirmation:</strong> 98811585 | 1 Bedroom Suite with King Bed</p>
             </div>
 
-            <div class="card">
+            <div class="card" id="rental-car">
                 <h3>🚗 Rental Car Information</h3>
                 <p><strong>Company:</strong> National Car Rental</p>
                 <p><strong>Vehicle:</strong> Full Size SUV</p>
@@ -386,8 +557,10 @@
             </div>
         </div>
 
+        <h2 id="itinerary" style="color: var(--primary-blue); margin: 40px 0 20px 0; text-align: center;">📅 Complete Daily Itinerary</h2>
+
         <!-- Day 2 - Wednesday, March 26 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day2">
             <div class="day-header">
                 📅 Wednesday, March 26, 2026 - Fort Myers Family Day
             </div>
@@ -431,7 +604,7 @@
         </div>
 
         <!-- Day 3 - Thursday, March 27 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day3">
             <div class="day-header">
                 📅 Thursday, March 27, 2026 - Travel to Sarasota & Explore
             </div>
@@ -489,7 +662,7 @@
         </div>
 
         <!-- Day 4 - Friday, March 28 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day4">
             <div class="day-header">
                 📅 Friday, March 28, 2026 - Full Sarasota Adventure
             </div>
@@ -547,7 +720,7 @@
         </div>
 
         <!-- Day 5 - Saturday, March 29 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day5">
             <div class="day-header">
                 📅 Saturday, March 29, 2026 - Travel to Orlando & Disney Prep
             </div>
@@ -612,23 +785,102 @@
         </div>
 
         <!-- Day 6 - Sunday, March 30 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day6">
             <div class="day-header">
-                📅 Sunday, March 30, 2026 - Check-out from Fort Myers (Completed)
+                📅 Sunday, March 30, 2026 - Orlando Arrival & Exploration
             </div>
             <div class="day-content">
                 <div class="timeline-item">
-                    <div class="time">Completed</div>
+                    <div class="time">10:00 AM</div>
                     <div class="event-details">
-                        <div class="event-title">✅ Fort Myers Portion Complete</div>
-                        <div class="event-description">Successfully completed Fort Myers stay at Marriott Sanibel Harbour Resort</div>
+                        <div class="event-title">🏨 Gaylord Palms Full Day</div>
+                        <div class="event-description">Resort exploration, water park, spa amenities, family activities</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">1:00 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">🍽️ Resort Dining Experience</div>
+                        <div class="event-description">Multiple restaurant options at Gaylord Palms with family-friendly atmospheres</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">3:00 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">🛍️ Disney Springs Option</div>
+                        <div class="event-description">World-class shopping, dining, entertainment district (~15 minutes from hotel)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">7:00 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">🍽️ Special Dinner</div>
+                        <div class="event-description"><strong>Options:</strong> Disney Springs dining, Universal CityWalk, or Gaylord Palms fine dining</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">9:00 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">🎹 Resort Entertainment</div>
+                        <div class="event-description">Auggie's Jammin' Piano Bar with live entertainment and mocktails</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 7 - Monday, March 31 -->
+        <div class="day-schedule">
+            <div class="day-header">
+                📅 Monday, March 31, 2026 - Disney Prep & Local Exploration
+            </div>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <div class="time">9:00 AM</div>
+                    <div class="event-details">
+                        <div class="event-title">🎢 Disney Planning Session</div>
+                        <div class="event-description">Family meeting - discuss park priorities, download Disney apps, check wait times</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:30 AM</div>
+                    <div class="event-details">
+                        <div class="event-title">🛍️ Target/Walmart Run</div>
+                        <div class="event-description">Stock up on snacks, sunscreen, water bottles, Disney souvenirs for less</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">1:00 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">🍽️ Lunch Options</div>
+                        <div class="event-description"><strong>Choice:</strong> International Drive restaurants, Universal CityWalk, or return to hotel</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">2:30 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">🎯 Optional Attraction</div>
+                        <div class="event-description"><strong>Options:</strong> ICON Park (Orlando Eye), Madame Tussauds, SEA LIFE Aquarium, or hotel pool day</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">6:00 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">🍽️ Early Dinner</div>
+                        <div class="event-description">Fuel up for tomorrow's early Disney start - kid-friendly restaurants</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">8:00 PM</div>
+                    <div class="event-details">
+                        <div class="event-title">😴 Early Rest</div>
+                        <div class="event-description">Early bedtime preparation for Magic Kingdom rope drop tomorrow</div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Day 7 - Tuesday, April 1 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day7">
             <div class="day-header">
                 📅 Tuesday, April 1, 2026 - Magic Kingdom Day
             </div>
@@ -672,7 +924,7 @@
         </div>
 
         <!-- Day 8 - Wednesday, April 2 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day8">
             <div class="day-header">
                 📅 Wednesday, April 2, 2026 - Hollywood Studios & Date Night
             </div>
@@ -716,7 +968,7 @@
         </div>
 
         <!-- Day 9 - Thursday, April 3 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day9">
             <div class="day-header">
                 📅 Thursday, April 3, 2026 - EPCOT & Family Time
             </div>
@@ -760,7 +1012,7 @@
         </div>
 
         <!-- Day 10 - Friday, April 4 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day10">
             <div class="day-header">
                 📅 Friday, April 4, 2026 - Animal Kingdom & Water Park
             </div>
@@ -804,7 +1056,7 @@
         </div>
 
         <!-- Day 11 - Saturday, April 5 -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day11">
             <div class="day-header">
                 📅 Saturday, April 5, 2026 - Departure Day
             </div>
@@ -841,7 +1093,7 @@
         </div>
 
         <!-- Day 1 - Tuesday, March 25 (Yesterday) -->
-        <div class="day-schedule">
+        <div class="day-schedule" id="day1">
             <div class="day-header">
                 📅 Tuesday, March 25, 2026 - Travel Day (Completed)
             </div>
@@ -922,7 +1174,7 @@
         </div>
 
         <!-- Dallas Love Field Layover Information -->
-        <div class="layover-optimization">
+        <div class="layover-optimization" id="layovers">
             <h3 style="color: #1976D2; margin-bottom: 15px;">✈️ Dallas Love Field (DAL) - 5hr 40min Layover</h3>
             <p><strong>Layover Time:</strong> 10:45 AM - 4:25 PM (Central Time) | <em>Long layover - plenty of time to explore!</em></p>
             
@@ -961,7 +1213,7 @@
         </div>
 
         <!-- Emergency & Important Contacts -->
-        <div class="card">
+        <div class="card" id="emergency">
             <h3>📞 Important Contacts & Information</h3>
             <div class="contact-section">
                 <div class="contact-item">
@@ -1030,8 +1282,122 @@
             </ul>
         </div>
 
+        <!-- Comprehensive Dining Guide -->
+        <div class="card" style="margin-top: 30px; border-left: 5px solid #28A745;" id="dining">
+            <h3>🍽️ Complete Dining Guide by Location</h3>
+            
+            <h4 style="color: var(--primary-blue); margin-top: 20px;">🏖️ Fort Myers Dining</h4>
+            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>🦐 Seafood Specialties:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>The Beached Whale - Fresh catch, family-friendly</li>
+                    <li>Nervous Nellie's - Waterfront dining, kids' menu</li>
+                    <li>Doc Ford's Rum Bar & Grille - Caribbean flavors</li>
+                </ul>
+                <p><strong>🍕 Family Favorites:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Pizza restaurants on Fort Myers Beach</li>
+                    <li>Casual dining in River District</li>
+                    <li>Ice cream shops for dessert</li>
+                </ul>
+            </div>
+            
+            <h4 style="color: var(--primary-blue); margin-top: 20px;">🎭 Sarasota Dining</h4>
+            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>🍽️ Downtown Main Street:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Indigenous - Farm-to-table, upscale family dining</li>
+                    <li>Mattison's City Grille - American classics, patio seating</li>
+                    <li>The Rosemary - Modern American, great for date night</li>
+                </ul>
+                <p><strong>🏖️ Siesta Key:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>The Old Salty Dog - Beachfront, casual family dining</li>
+                    <li>Siesta Key Oyster Bar - Fresh seafood, sunset views</li>
+                    <li>Captain Curt's Crab & Oyster Bar - Local favorite</li>
+                </ul>
+            </div>
+            
+            <h4 style="color: var(--primary-blue); margin-top: 20px;">🎢 Orlando/Disney Area Dining</h4>
+            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>🏰 Disney Springs:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Rainforest Cafe - Themed family experience</li>
+                    <li>Wolfgang Puck Express - Quick upscale dining</li>
+                    <li>Ghirardelli Ice Cream & Chocolate Shop</li>
+                </ul>
+                <p><strong>🏨 Gaylord Palms Restaurants:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Old Hickory Steakhouse - Upscale steakhouse</li>
+                    <li>Sunset Sam's Fish Camp - Family seafood restaurant</li>
+                    <li>Villa de Flora - European-inspired cuisine</li>
+                </ul>
+                <p><strong>🎭 Universal CityWalk:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Margaritaville - Tropical themed, mocktails available</li>
+                    <li>Hard Rock Cafe - American classics with music theme</li>
+                    <li>Vivo Italian Kitchen - Authentic Italian</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Entertainment & Live Music Guide -->
+        <div class="card" style="margin-top: 30px; border-left: 5px solid #FF6B35;" id="entertainment">
+            <h3>🎵 Entertainment & Live Music by Location</h3>
+            
+            <h4 style="color: var(--primary-blue); margin-top: 20px;">🏖️ Fort Myers Entertainment</h4>
+            <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>🎸 Live Music Venues:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Buddha Lounge - Small dance floor, loud music, local bands</li>
+                    <li>City Tavern - 20+ years, live entertainment, River District</li>
+                    <li>Ranch Concert Hall - Country music, line dancing</li>
+                    <li>Barbara B. Mann Performing Arts Hall - Broadway shows, concerts</li>
+                </ul>
+                <p><strong>🏖️ Beach Entertainment:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Beach bars with live bands and musicians regularly</li>
+                    <li>Sunset celebrations with music</li>
+                    <li>Street performers in River District</li>
+                </ul>
+            </div>
+            
+            <h4 style="color: var(--primary-blue); margin-top: 20px;">🎭 Sarasota Entertainment</h4>
+            <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>🎵 Live Music & Dancing:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Clasico Café and Bar - EDM DJ weekends, dance floor</li>
+                    <li>Joyland Live - Top-rated venue with dancing</li>
+                    <li>88 Live Piano Bar - Interactive entertainment</li>
+                    <li>Van Wezel Friday Fest - Outdoor concerts, funk/reggae/rock</li>
+                </ul>
+                <p><strong>🎭 Cultural Entertainment:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Sarasota Opera House - World-class performances</li>
+                    <li>Van Wezel Performing Arts Hall - Broadway shows</li>
+                    <li>Sarasota Orchestra - Classical music performances</li>
+                </ul>
+            </div>
+            
+            <h4 style="color: var(--primary-blue); margin-top: 20px;">🎢 Orlando Entertainment</h4>
+            <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>🕺 Dance Clubs & EDM:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Attic Orlando - EDM music, live DJs, no cover before midnight</li>
+                    <li>3NINE Orlando - Downtown club with VIP experience</li>
+                    <li>ICEBAR Orlando - Unique ice bar experience</li>
+                </ul>
+                <p><strong>🎵 Live Music Venues:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>House of Blues - Disney Springs, major artists</li>
+                    <li>Atlantic Dance Hall - Disney BoardWalk, '80s/'90s music</li>
+                    <li>Auggie's Jammin' Piano Bar - Gaylord Palms, interactive shows</li>
+                </ul>
+            </div>
+        </div>
+
         <!-- Date Night & Family Activities Guide -->
-        <div class="card" style="margin-top: 30px; border-left: 5px solid #FF69B4;">
+        <div class="card" style="margin-top: 30px; border-left: 5px solid #FF69B4;" id="date-nights">
             <h3>💑 Date Night Guide - Colby & Kristi</h3>
             <p style="margin-bottom: 20px;"><em>Mocktail-friendly venues with EDM/Reggae music and dancing</em></p>
             
@@ -1064,7 +1430,7 @@
         </div>
 
         <!-- Family Activities by Location -->
-        <div class="card" style="margin-top: 30px; border-left: 5px solid #32CD32;">
+        <div class="card" style="margin-top: 30px; border-left: 5px solid #32CD32;" id="family-activities">
             <h3>👨‍👩‍👧‍👦 Family Activities Guide - Cash & Chanel</h3>
             
             <h4 style="color: var(--primary-blue); margin-top: 20px;">🏖️ Fort Myers Family Activities</h4>
@@ -1150,8 +1516,41 @@
             </ul>
         </div>
     </div>
+    </div> <!-- Close content-wrapper -->
 
     <script>
+        // Sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            if (sidebar.classList.contains('open')) {
+                closeSidebar();
+            } else {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+            }
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        }
+
+        // Close sidebar when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    setTimeout(closeSidebar, 300); // Small delay for smooth navigation
+                });
+            });
+        });
+
+        // Existing functions
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             const button = document.querySelector('.toggle-button');
